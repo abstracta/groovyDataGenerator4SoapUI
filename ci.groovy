@@ -26,7 +26,7 @@ def validate_ci(ci) {
   	return (dig == validation_digit(ci).toString())
 }
 
-//Function to get a random valid between 0 and 9.999.999
+//Function to get a random valid 7 digit ci between 0 and 9.999.999 with the validation digit
 def random_ci(){
 	Random rnd = new Random()
 	def ci = rnd.nextInt(10000000).toString()
