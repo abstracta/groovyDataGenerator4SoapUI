@@ -38,3 +38,8 @@ def random_ci(){
 def clean_ci(ci){
   return ci.replaceAll(/\D/, '')
 }
+
+def ci = random_ci()
+//Set the id as a SoapUI property
+testRunner.testCase.testSuite.setPropertyValue( "CI1", ci)
+println "CI: " + ci + "."
