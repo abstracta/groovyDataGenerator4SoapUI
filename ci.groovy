@@ -1,3 +1,4 @@
+//Function to generate the validation digit of the id
 def validation_digit(ci) {
 	def a = 0
 	def i = 0
@@ -17,6 +18,7 @@ def validation_digit(ci) {
   	}
 }
 
+//Function to validate if the id has a correct format, analyzing the validation digit
 def validate_ci(ci) {
   	ci = clean_ci(ci)
   	def dig = ci[ci.length() - 1]
@@ -24,6 +26,7 @@ def validate_ci(ci) {
   	return (dig == validation_digit(ci).toString())
 }
 
+//Function to get a random valid between 0 and 9.999.999
 def random_ci(){
 	Random rnd = new Random()
 	def ci = rnd.nextInt(10000000).toString()
@@ -31,6 +34,7 @@ def random_ci(){
 	return ci
 }
 
+//Function to remove "." and "-", and basically every character that isn't a number from the id.
 def clean_ci(ci){
   return ci.replaceAll(/\D/, '')
 }
