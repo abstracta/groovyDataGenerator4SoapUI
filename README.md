@@ -1,8 +1,15 @@
-# groovyDataGenerator4SoapUI
-Groovy scripts to generate fake data to use in SoapUI:
+# groovyScripts4SoapUI
+Groovy scripts to manage test data in SoapUI projects.
 
+- *tomarDatosDesdeArchivo.groovy* get the data from the line *lineNo* in *ci.txt* file and set the property *CI* in SoapUi with that value
 - *datosPersonas.groovy* generates "random" names, last names and emails in SoapUI
 - *ci.groovy* could generate random 8 digit valid ci's or validate an existing one analyzing the validation digit
+
+## tomarDatosDesdeArchivo
+
+In order to have this script working, you should replace *<route-to-file>* in line 4 with the directory where *ci.txt* file it's located, and declare *CI* and *lineNo* properties in SoapUI.
+
+If you want to start getting data from the first line you should set *lineNo* to 0 in SoapUI.
 
 ## datosPersonas
 
