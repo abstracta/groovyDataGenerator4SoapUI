@@ -7,7 +7,7 @@ Groovy scripts to manage test data in SoapUI projects.
 
 ## tomarDatosDesdeArchivo
 
-In order to have this script working, you should replace *<route-to-file>* in line 4 with the directory where *ci.txt* file it's located, and declare *CI* and *lineNo* properties in SoapUI.
+In order to have this script working, you should replace *route-to-file* in line 4 with the directory where *ci.txt* file it's located, and declare *CI* and *lineNo* properties in SoapUI.
 
 If you want to start getting data from the first line you should set *lineNo* to 0 in SoapUI.
 
