@@ -1,15 +1,17 @@
 # groovyScripts4SoapUI
+
 Groovy scripts to manage test data in SoapUI projects.
 
-- *tomarDatosDesdeArchivo.groovy* get the data from the line *lineNo* in *ci.txt* file and set the property *CI* in SoapUi with that value
-- *datosPersonas.groovy* generates "random" names, last names and emails in SoapUI
-- *ci.groovy* could generate random 8 digit valid ci's or validate an existing one analyzing the validation digit
+- _tomarDatosDesdeArchivo.groovy_ get the data from the line _lineNo_ in _ci.txt_ file and set the property _CI_ in SoapUi with that value
+- _datosPersonas.groovy_ generates "random" names, last names and emails in SoapUI
+- _ci.groovy_ could generate random 8 digit valid ci's or validate an existing one analyzing the validation digit
+- _ejemplosMongoDB_ has examples for connecting to a Mongo database and performing actions over collections.
 
 ## tomarDatosDesdeArchivo
 
-In order to have this script working, you should replace *route-to-file* in line 4 with the directory where *ci.txt* file it's located, and declare *CI* and *lineNo* properties in SoapUI.
+In order to have this script working, you should replace _route-to-file_ in line 4 with the directory where _ci.txt_ file it's located, and declare _CI_ and _lineNo_ properties in SoapUI.
 
-If you want to start getting data from the first line you should set *lineNo* to 0 in SoapUI.
+If you want to start getting data from the first line you should set _lineNo_ to 0 in SoapUI.
 
 ## datosPersonas
 
@@ -17,15 +19,15 @@ It get the names from a list of 3096 elements and the last names from a list of 
 
 To increase the randomness, both name and last name are concatenated with a random integer from 0 to 999. That increase the chance of getting the same combination of strings for name and last name to 1 in 1921904000000.
 
-Then, the email is generated as *name.lastname@gmail.com*.
+Then, the email is generated as _name.lastname@gmail.com_.
 
 An example of the result could be:
 
-- Name: *Aaron1*
-- Lastname: *Abbott999*
-- Email: *Aaron1.Abbott999@gmail.com*
+- Name: _Aaron1_
+- Lastname: _Abbott999_
+- Email: _Aaron1.Abbott999@gmail.com_
 
-Finally, each value is saved in a SoapUI property (*Name1*, *Lastname1* and *Email1*).
+Finally, each value is saved in a SoapUI property (_Name1_, _Lastname1_ and _Email1_).
 
 ## ci
 
@@ -33,9 +35,20 @@ It's the Groovy version of [this](https://github.com/picandocodigo/ci_js) JavaSc
 
 It has 4 functions:
 
-- *validation_digit(ci)* \- Generates the validation digit from the other remaining 7 digits of the ci
-- *validate_ci(ci)* \- Validates if the id has a correct format, analyzing the validation digit
-- *random_ci()* \- Returns a random valid ci between 0 and 9.999.999 with the validation digit
-- *clean_ci(ci)* \- It basically removes any character that it's not a number from the ci (for example "." or "-")
+- _validation_digit(ci)_ \- Generates the validation digit from the other remaining 7 digits of the ci
+- _validate_ci(ci)_ \- Validates if the id has a correct format, analyzing the validation digit
+- _random_ci()_ \- Returns a random valid ci between 0 and 9.999.999 with the validation digit
+- _clean_ci(ci)_ \- It basically removes any character that it's not a number from the ci (for example "." or "-")
 
 Finally, the script creates a random ci and set a SoapUi property named "CI1" with its value.
+
+## ejemplosMongoDB
+
+In order to use this script you will need the [mongo-java-driver jar](https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver) on the lib folder where you have SoapUI installed.
+
+This script defines a class that has methods for connecting to a client and getting collections from a database, the methods are the following:
+
+- _client()_ \- Creates and returns a new Mongo Client.
+- _collection(databaseName, collectionName)_ \- Gets a Mongo database and returns a collection.
+
+In addition to that, there are some examples that show how to perform some actions over collections, such as iteration over elements, finding documents and making updates.
